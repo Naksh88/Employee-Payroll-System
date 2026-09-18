@@ -51,9 +51,8 @@ Uses a monthly stipend as the gross salary and has no deductions.
 
 Employee records are stored in:
 
-```text
 data/employees.txt
-```
+
 
 The application automatically loads existing records when started and saves changes after adding, updating, or deleting employees.
 
@@ -61,24 +60,20 @@ The application automatically loads existing records when started and saves chan
 
 Compile and run the `Main.java` file:
 
-```bash
+
 javac Main.java
 java Main
-```
+
 
 The application provides a menu-driven interface for managing payroll operations.
 
 ## Project Structure
 
-```text
+
 Employee-Payroll-System/
 │
 ├── Main.java
 ├── data/
 │   └── employees.txt
 └── README.md
-```
 
-## Author
-
-**Naksh Khandelwal**
