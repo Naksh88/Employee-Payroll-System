@@ -1,4 +1,4 @@
-Employee-Payroll-System
+Employee-Payroll-System :-
 The Employee Payroll System is a Java Program designed to manage basic employee salary information. It takes employee details as input and calculates the salary based on the data entered. The system runs through the command line, so it can be used without any graphical interface.
 
 Features
