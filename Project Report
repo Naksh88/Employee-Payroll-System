@@ -1,335 +1,328 @@
-EMPLOYEE PAYROLL SYSTEM
-Project Report
-1. Introduction
+# EMPLOYEE PAYROLL SYSTEM
 
-The Employee Payroll System is a command-line based Java application designed to manage employee records and perform basic payroll operations.
+# PROJECT REPORT
 
-The system allows users to add, view, update, delete, search, and sort employee records. It also calculates gross salary, deductions, and net salary according to the employee type. The application supports three types of employees: Full-Time Employee, Manager, and Intern.
+## 1. Introduction
 
-Employee information is stored in a text file so that the records can be loaded when the application starts and saved whenever changes are made. The main application provides a menu-driven interface through which users can perform different payroll operations.
+The **Employee Payroll System** is a Java-based command-line application developed to manage employee records and automate basic payroll operations. The system provides an organized way to add, view, update, delete, and search employee information while also calculating salaries and generating payslips.
 
-2. Objectives
+The project supports different categories of employees, including **Full-Time Employees, Managers, and Interns**. Each employee type follows its own salary calculation rules. Employee information is stored in a text file so that records remain available even after the application is closed.
 
-The main objectives of this project are:
+---
 
-To develop a simple employee payroll management system using Java.
-To maintain employee records efficiently.
-To calculate gross salary, deductions, and net salary.
-To support different employee categories using object-oriented programming.
-To provide CRUD operations for employee records.
-To search employees based on their department.
-To generate individual employee payslips.
-To calculate department-wise and total company payroll.
-To sort employees according to their net salary.
-To store employee information permanently using file handling.
-3. Technologies Used
-Technology	Purpose
-Java	Main programming language
-Java OOP	Classes, inheritance, abstraction and polymorphism
-Java Collections	ArrayList, List, Map and TreeMap
-File Handling	Reading and writing employee records
-Exception Handling	Handling duplicate and missing employee records
-Command Line Interface	User interaction
+## 2. Objective
 
-The program uses Java's Scanner class for input and Java collection classes for managing employee records.
+The main objective of this project is to develop a simple and efficient payroll management application using Java.
 
-4. System Features
+The system is designed to:
 
-The application provides the following major features.
+* Maintain employee information.
+* Support multiple employee categories.
+* Calculate gross salary, deductions, and net salary.
+* Generate employee payslips.
+* Update and delete employee records.
+* Search employees according to department.
+* Generate department-wise payroll summaries.
+* Sort employees according to net salary.
+* Store employee information permanently using file handling.
+* Demonstrate important Object-Oriented Programming concepts.
 
-4.1 Add Employee
+---
 
-Users can add three different types of employees:
+## 3. Technologies Used
 
-Full-Time Employee
-Manager
-Intern
+**Programming Language:** Java
+**User Interface:** Command-Line Interface (CLI)
+**Data Storage:** Text file (`data/employees.txt`)
+**Java Libraries:** `java.io` and `java.util`
 
-For a full-time employee, the system accepts the basic salary. For a manager, it additionally accepts bonus and team size. For an intern, the monthly stipend is entered.
+The application does not require a graphical user interface or external database and can be executed directly through a terminal.
 
-The system also checks whether the employee ID already exists before adding a new employee.
+---
 
-4.2 View All Employees
+## 4. System Features
 
-The system displays all stored employee records in a formatted table containing:
+The Employee Payroll System provides the following major features:
 
-Employee ID
-Name
-Department
-Employee Type
-Basic Salary
-Net Salary
+### 4.1 Add Employee
 
-Employees are displayed according to their employee ID.
+The user can add three different types of employees:
 
-4.3 Generate Payslip
+1. Full-Time Employee
+2. Manager
+3. Intern
 
-The user can enter an employee ID to generate an individual payslip.
+Each employee is assigned an ID, name, department, and salary-related information.
 
-The payslip contains:
+### 4.2 View All Employees
 
-Employee ID
-Employee name
-Department
-Employee type
-Basic salary
-Gross salary
-Deductions
-Net salary
+The system displays all stored employees along with details such as:
 
-Managers also have their team size and bonus displayed on their payslip.
+* Employee ID
+* Name
+* Department
+* Employee Type
+* Basic Salary
+* Net Salary
 
-4.4 Update Employee
+Employees are displayed in sorted order based on their employee ID.
 
-Existing employee information can be updated using the employee ID.
+### 4.3 Generate Payslip
 
-The user can update:
+The system can generate a payslip for an employee using the employee ID.
 
-Name
-Department
-Salary/Stipend
+The payslip contains information such as employee details, basic salary, gross salary, deductions, and net salary. For managers, additional information such as bonus and team size is also displayed.
 
-The system allows the user to press Enter to keep an existing value.
+### 4.4 Update Employee
 
-4.5 Delete Employee
+Existing employee information can be modified. The user can update:
 
-The system allows an employee record to be deleted by entering the employee ID.
+* Name
+* Department
+* Salary or stipend
 
-If the employee does not exist, an appropriate error message is displayed.
+If the user does not provide a new value, the existing value can be retained.
 
-4.6 Search by Department
+### 4.5 Delete Employee
 
-Users can search for employees belonging to a particular department.
+An employee record can be removed by entering the employee ID. The updated employee list is then saved to the data file.
 
-The department comparison is case-insensitive, allowing searches such as IT, it, or It to identify the same department.
+### 4.6 Search by Department
 
-4.7 Department Payroll Summary
+The system allows users to search for employees belonging to a particular department. Department matching is performed without considering uppercase or lowercase differences.
 
-The system calculates the total net payroll for each department.
+### 4.7 Department Payroll Summary
 
-It also displays the total payroll of the entire company. A TreeMap is used to maintain department-wise results in sorted key order.
+The application calculates the total net payroll for each department. It also calculates and displays the total payroll of the entire company.
 
-4.8 Sort Employees by Net Salary
+### 4.8 Sort Employees by Net Salary
 
-Employees can be displayed in descending order of their net salary.
+Employees can be displayed according to their calculated net salary in descending order.
 
-This allows the payroll records to be viewed from the highest net salary to the lowest.
+---
 
-5. Object-Oriented Programming Concepts
+## 5. Salary Calculation
 
-The project makes use of several important OOP concepts.
+The project uses different salary calculation methods depending on the employee type.
 
-5.1 Abstraction
+### Full-Time Employee
 
-Employee is an abstract class containing common employee properties and abstract methods such as:
+For a full-time employee:
 
-calculateGrossSalary()
-calculateDeductions()
-getType()
-toCSV()
+* HRA = 20% of Basic Salary
+* DA = 10% of Basic Salary
+* Tax = 10% of Gross Salary
+* PF = ₹1,800
 
-This provides a common structure for different employee types.
+**Gross Salary = Basic Salary + HRA + DA**
 
-5.2 Inheritance
+**Deductions = Tax + PF**
 
-The project uses inheritance to create specialized employee classes.
+**Net Salary = Gross Salary − Deductions**
 
-The structure is:
+### Manager
 
-Employee
-   |
-   +-- FullTimeEmployee
-   |       |
-   |       +-- Manager
-   |
-   +-- Intern
+A manager follows the full-time employee salary structure with an additional bonus.
 
-FullTimeEmployee and Intern inherit from Employee, while Manager extends FullTimeEmployee.
+**Gross Salary = Full-Time Gross Salary + Bonus**
 
-5.3 Polymorphism
+The applicable deductions are then calculated to determine the manager's net salary.
 
-Methods such as calculateGrossSalary(), calculateDeductions(), getType(), and toCSV() are overridden by subclasses.
-
-This allows the payroll manager to work with different employee objects through the common Employee reference.
-
-5.4 Encapsulation
-
-Employee properties are accessed through getter and setter methods. For example, employee name, department, salary, manager bonus, and team size can be accessed or modified through dedicated methods.
-
-6. Payroll Calculation
-
-The payroll calculation differs according to the employee type.
-
-Full-Time Employee
-
-The system calculates:
-
-HRA = 20% of Basic Salary
-
-DA = 10% of Basic Salary
-
-Therefore:
-
-Gross Salary = Basic Salary + HRA + DA
-
-The deductions are:
-
-Tax = 10% of Gross Salary
-
-PF = 1800
-
-Therefore:
-
-Net Salary = Gross Salary − Deductions
-
-These calculations are implemented in the FullTimeEmployee class.
-
-Manager
-
-A manager follows the full-time employee salary calculation and additionally receives a bonus.
-
-Manager Gross Salary = Full-Time Gross Salary + Bonus
-
-The manager class also stores the team size.
-
-Intern
+### Intern
 
 For an intern:
 
-Gross Salary = Monthly Stipend
+**Gross Salary = Monthly Stipend**
 
-Deductions = 0
+**Deductions = 0**
 
 Therefore:
 
-Net Salary = Monthly Stipend
+**Net Salary = Monthly Stipend**
 
-This calculation is implemented in the Intern class.
+---
 
-7. Data Storage and File Handling
+## 6. Object-Oriented Programming Concepts Used
 
-The application stores employee records in:
+The project demonstrates several important OOP concepts.
 
-data/employees.txt
+### Abstraction
 
-When the application starts, the PayrollManager loads existing employee records from the file. Whenever an employee is added, updated, or deleted, the data is saved back to the file.
+The `Employee` class is declared as an abstract class. It defines common employee properties and abstract methods such as salary calculation, deduction calculation, employee type, and CSV conversion.
 
-The employee records are stored in CSV-style format. For example, the system uses fields representing:
+### Inheritance
 
-Employee Type, ID, Name, Department, Salary, Extra, Team Size
+`FullTimeEmployee` and `Intern` inherit from the `Employee` class.
 
-The program parses these records and reconstructs the appropriate employee object.
+The `Manager` class further inherits from `FullTimeEmployee`, allowing it to reuse the salary calculation functionality of a full-time employee.
 
-8. Exception Handling
+### Polymorphism
 
-Custom exceptions are used to handle important errors.
+Methods such as `calculateGrossSalary()`, `calculateDeductions()`, `getType()`, and `toCSV()` are overridden by different employee classes according to their requirements.
 
-DuplicateEmployeeException
+### Encapsulation
 
-This exception is generated when the user attempts to add an employee with an ID that already exists.
+Employee information is managed through class fields and getter/setter methods. Manager-specific information such as bonus and team size is maintained within the `Manager` class.
 
-EmployeeNotFoundException
+---
 
-This exception is used when an employee with the requested ID cannot be found.
+## 7. Exception Handling
 
-The program also handles invalid numerical input, negative values, invalid salary values, and file input/output errors.
+The application uses custom exceptions to handle important error conditions.
 
-9. Class Structure
+### DuplicateEmployeeException
 
-The major classes used in the project are:
+This exception is generated when the user attempts to add an employee whose ID already exists in the system.
 
-Class	Responsibility
-Main	Provides the command-line interface and menu
-Employee	Abstract base class for employees
-FullTimeEmployee	Handles full-time employee payroll
-Manager	Handles manager-specific salary and bonus
-Intern	Handles intern stipend
-PayrollManager	Manages employee records and payroll operations
-DuplicateEmployeeException	Handles duplicate employee IDs
-EmployeeNotFoundException	Handles missing employee records
+### EmployeeNotFoundException
 
-The PayrollManager is responsible for adding, updating, deleting, searching, sorting, calculating payroll, and handling persistent employee data.
+This exception is generated when an employee ID cannot be found while performing operations such as searching, updating, or deleting an employee.
 
-10. Input Validation
+The application also handles invalid numeric input and file-related errors.
 
-The application includes validation to reduce incorrect user input.
+---
 
-Examples include:
+## 8. File Handling
 
-Employee ID must be greater than zero.
-Team size cannot be negative.
-Salary must be positive when creating an employee.
-Name and department cannot be empty.
-Invalid numerical input is handled without terminating the program.
-Negative salary values are rejected during updates.
+Employee records are stored in:
 
-These validations are implemented through reusable input methods in the Main class.
+`data/employees.txt`
 
-11. Working Flow of the System
+The program loads employee information from this file when the application starts.
 
-The overall working process can be represented as:
+Whenever an employee is added, updated, or deleted, the employee information is saved back to the file.
 
-          Start
-            |
-            v
-    Load Employee Data
-            |
-            v
-       Display Menu
-            |
-     +------+------+
-     |             |
-     v             v
- Perform Operation  Exit
-     |
-     +-------------------------------+
-     | Add / View / Update / Delete  |
-     | Payslip / Search / Summary    |
-     | Sort by Salary                |
-     +-------------------------------+
-            |
-            v
-       Save Changes
-            |
-            v
-       Display Menu
-12. Advantages
-Simple command-line interface.
-Supports multiple employee types.
-Uses object-oriented programming principles.
-Provides automatic salary calculations.
-Supports persistent storage using files.
-Includes employee search and sorting functionality.
-Provides department-wise payroll calculations.
-Uses custom exception handling.
-Includes input validation.
-Allows generation of individual payslips.
-13. Limitations
+Employee information is stored using a CSV-style format containing details such as:
 
-The current version is a command-line application and does not include a graphical user interface or web interface.
+`Employee Type, ID, Name, Department, Salary, Extra Value, Team Size`
 
-Employee data is stored in a text file rather than a database. The payroll calculations are also based on the fixed salary rules implemented in the program.
+This allows employee information to persist between different executions of the program.
 
-The current system focuses on basic employee and payroll management rather than advanced features such as attendance tracking, leave management, tax slabs, or automated monthly payroll processing.
+---
 
-14. Future Enhancements
+## 9. Input Validation
 
-The system can be extended in the future by adding:
+The application includes validation methods to reduce invalid user input.
 
-Database connectivity using MySQL or PostgreSQL.
-Graphical user interface or web interface.
-Employee login and administrator authentication.
-Attendance and leave management.
-More detailed tax calculations.
-Payslip export to PDF.
-Payroll history and monthly reports.
-Employee performance information.
-Automated salary processing.
-Backup and restore functionality.
-15. Conclusion
+The system checks that:
 
-The Employee Payroll System demonstrates how Java and object-oriented programming can be used to develop a practical payroll management application. The project implements employee management, salary calculation, payslip generation, searching, sorting, department-wise payroll analysis, exception handling, and file-based data persistence.
+* Employee IDs are positive.
+* Salary and stipend values are positive when creating employees.
+* Team size cannot be negative.
+* Required text fields cannot be empty.
+* Numeric fields contain valid numbers.
+* Salary values cannot be negative during updates.
+* Employee IDs are not duplicated.
 
-The use of abstraction, inheritance, polymorphism, encapsulation, collections, and file handling makes the project a practical demonstration of core Java programming concepts.
+This improves the reliability of the application.
 
-Overall, the project provides a functional foundation for an employee payroll management system and can be further expanded with database support, authentication, graphical interfaces, and advanced payroll features.
+---
+
+## 10. Program Structure
+
+The project mainly consists of the following classes:
+
+**Main**
+Controls the command-line interface, menu, and user input.
+
+**Employee**
+Abstract base class containing common employee information and payroll functionality.
+
+**FullTimeEmployee**
+Represents regular full-time employees and implements their salary calculations.
+
+**Manager**
+Extends `FullTimeEmployee` and adds manager-specific information such as bonus and team size.
+
+**Intern**
+Represents interns whose salary is handled as a monthly stipend.
+
+**PayrollManager**
+Manages employee records, searching, updating, deleting, sorting, payroll summaries, and file operations.
+
+**DuplicateEmployeeException**
+Handles duplicate employee IDs.
+
+**EmployeeNotFoundException**
+Handles situations where an employee cannot be found.
+
+---
+
+## 11. Command-Line Execution
+
+The project is designed to run directly from the terminal.
+
+The Java source file containing the public `Main` class should be saved as:
+
+`Main.java`
+
+### Compile
+
+`javac Main.java`
+
+### Run
+
+`java Main`
+
+After execution, the Employee Payroll System menu appears in the terminal.
+
+The user can select options from **1 to 9** to perform different payroll operations.
+
+---
+
+## 12. Expected Output
+
+When the program starts, the user is presented with a menu similar to:
+
+**EMPLOYEE PAYROLL SYSTEM**
+
+1. Add Employee
+2. View All Employees
+3. Generate Payslip
+4. Update Employee
+5. Delete Employee
+6. Search by Department
+7. Department Payroll Summary
+8. Sort Employees by Net Salary
+9. Exit
+
+The user selects the required operation and provides the requested employee information.
+
+---
+
+## 13. Advantages
+
+The Employee Payroll System provides several benefits:
+
+* Simple command-line operation.
+* Automatic salary calculations.
+* Support for multiple employee categories.
+* Persistent employee records using file handling.
+* Easy employee searching and management.
+* Department-wise payroll analysis.
+* Input validation and custom exception handling.
+* Clear implementation of Java OOP concepts.
+
+---
+
+## 14. Future Enhancements
+
+The project can be extended in the future by adding:
+
+* Database integration.
+* Graphical User Interface (GUI).
+* User authentication.
+* Attendance management.
+* Leave management.
+* Additional employee categories.
+* Detailed salary reports.
+* Exporting payslips to PDF.
+* More configurable salary and deduction rules.
+
+---
+
+## 15. Conclusion
+
+The **Employee Payroll System** successfully demonstrates how Java can be used to develop a practical payroll management application. It provides essential employee management operations, salary calculations, payslip generation, department-wise payroll summaries, searching, sorting, and persistent file storage.
+
+The project also demonstrates important Java concepts such as **abstraction, inheritance, polymorphism, encapsulation, collections, exception handling, and file handling**. Overall, the system provides a structured command-line solution for managing basic employee payroll information.
